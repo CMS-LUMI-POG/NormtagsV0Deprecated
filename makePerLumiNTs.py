@@ -16,6 +16,8 @@ from subprocess import call, Popen, STDOUT
 from operator import itemgetter
 from itertools import groupby
 
+import readline
+
 get_input_name = lambda base: base
 
 
@@ -34,7 +36,7 @@ detRunLS_bad = {}
 def brilcalc_for_all(fill):
     time_selection = []
     f1 = tempfile.NamedTemporaryFile()
-    log.debug("Created temp file name for hfoc: %s", f1.name)
+    #log.debug("Created temp file name for hfoc: %s", f1.name)
 
     if fill is not None:
         time_selection += ["-f", str(fill)]
@@ -45,13 +47,13 @@ def brilcalc_for_all(fill):
 
 
     f2 = tempfile.NamedTemporaryFile()
-    log.debug("Created temp file name for bcm1f: %s", f2.name)
+    #log.debug("Created temp file name for bcm1f: %s", f2.name)
     cmd2 = ["brilcalc", "lumi", "--byls", "-o", f2.name,"--type","bcm1f"]
     cmd2 += time_selection
     subprocess.call(cmd2)
 
     f3 = tempfile.NamedTemporaryFile()
-    log.debug("Created temp file name for pltzero: %s", f3.name)
+    #log.debug("Created temp file name for pltzero: %s", f3.name)
     cmd3 = ["brilcalc", "lumi", "--byls", "-o", f3.name,"--type","pltzero"]
     cmd3 += time_selection
     subprocess.call(cmd3)
@@ -92,6 +94,11 @@ def main():
         "-f", dest="fill", type=int, help="fill number")
 
     args = parser.parse_args()
+
+
+    readline.parse_and_bind('tab: complete')
+    readline.parse_and_bind('set editing-mode vi')
+
 
     types = ["hfoc","bcm1f","pltzero"]
     f1,f2,f3 = brilcalc_for_all(args.fill)

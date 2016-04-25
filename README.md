@@ -59,3 +59,56 @@
   h) Not yet finalized! Someone has to review and merge into CMS-LUMI-POG's "master", before you see your nice work be released. Stay tuned and follow the discussion on the pull request page
 
 
+
+
+##Instructions for producing normtags per lumi section
+
+  a) Make sure you have lumiValidate.py in your working directory (for plots)
+
+  b) Steps:
+     i) python makePerLumiNTs.py -f FillNo
+     ii) (i) Calls lumiValidate.py -f FillNo
+     iii) Provides lumi sections available for each detector
+     iv) Asks user for detector option: hfocv1, bcm1fv1, pltzerov1
+     v) User is then asked to enter runNo, and bad LS range(s)
+     vi) Output: recorded_LS.json, badLS_det_type.json, goodLS_det_type.json
+     
+  c) As an example, let's say you would like to inspect Fill 4452. This particular fill has 3 different runs: 258174, 258175, and 258177. For simplicity, let's assume that pltzerov1 has bad data for run 258174 lumi sections 1 to 20, run 2581777 lumi sections 1 to 100 and 300 to 350.
+     python makePerLumiNTs.py -f 4452
+     pltzerov1
+     258175 1 20
+     258177 1 100
+     258177 100 350
+     exit(ctrl-D or ctrl-C return)
+
+     more *.json should look like the following:
+  
+     ::::::::::::::
+     badLS_pltzerov1.json
+     ::::::::::::::
+     ["pltzerov1",{"258175":[[1,20]]}],
+     ["pltzerov1",{"258177":[[1,100]]}],
+     ["pltzerov1",{"258177":[[300,350]]}]
+     ::::::::::::::
+     goodLS_pltzerov1.json
+     ::::::::::::::
+     ["pltzerov1",{"258175":[[21,124]]}],
+     ["pltzerov1",{"258174":[[1,38]]}],
+     ["pltzerov1",{"258177":[[101,299]]}],
+     ["pltzerov1",{"258177":[[351,2132]]}]
+     ::::::::::::::
+     recorded_LS.json
+     ::::::::::::::
+
+     ["hfocv1",{"258174":[[1,38]]}],
+     ["hfocv1",{"258175":[[1,124]]}],
+     ["hfocv1",{"258177":[[1,2132]]}]
+
+     ["bcm1fv1",{"258174":[[1,38]]}],
+     ["bcm1fv1",{"258175":[[1,124]]}],
+     ["bcm1fv1",{"258177":[[1,2132]]}]
+
+     ["pltzerov1",{"258174":[[1,38]]}],
+     ["pltzerov1",{"258175":[[1,124]]}],
+     ["pltzerov1",{"258177":[[1,2132]]}]
+

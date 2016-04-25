@@ -63,7 +63,9 @@
 
 ##Instructions for producing normtags per lumi section
 
-  a) Make sure you have lumiValidate.py in your working directory (for plots)
+  a) Make sure you have lumiValidate.py in your working directory (for plots).
+  
+     cp  ~cmsbril/public/lumiValidate.py .
 
   b) Steps:
   
@@ -79,7 +81,7 @@
      
      vi) Output: recorded_LS.json, badLS_det_type.json, goodLS_det_type.json
      
-  c) As an example, let's say you would like to inspect Fill 4452. This particular fill has 3 different runs: 258174, 258175, and 258177. For simplicity, let's assume that pltzerov1 has bad data for run 258174 lumi sections 1 to 20, run 2581777 lumi sections 1 to 100 and 300 to 350.
+  c) As an example, let's say you would like to inspect Fill 4452. This particular fill has 3 different runs: 258174, 258175, and 258177. For simplicity, let's assume that pltzerov1 has bad data for run 258174 lumi sections 1 to 20, run 258177 lumi sections 1 to 100 and 300 to 350.
   
      python makePerLumiNTs.py -f 4452
      

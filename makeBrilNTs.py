@@ -6,7 +6,6 @@ from itertools import groupby
 # list of json files with goodLS
 listFiles = ["goodLS_pltzerov1.json","goodLS_bcm1fv1.json","goodLS_hfocv1.json"]
 
-#(Krishna): Probably could do without allData
 allData = []    #det_type, runNo, lsFrom, lsTo
 runRange = {}   #runNo ==> LS numbers
 
@@ -87,7 +86,12 @@ for ind in range(0,3):
 
         # if intersection is non-empty==> tag this range
         if intersectLS:
-            normTag.append([det_type, int(runNo),min(intersectLS), max(intersectLS)])
+            # if intersectLS is not continuous list of numbers, group them
+            for a,b in groupby(enumerate(intersectLS), lambda(i,x):i-x):
+                tmp = map(itemgetter(1),b)
+                normTag.append([det_type, int(runNo),tmp[0], tmp[-1]])
+
+#            normTag.append([det_type, int(runNo),min(intersectLS), max(intersectLS)])
             #print "^LS: ", runNo, intersectLS,'\n',min(intersectLS),  max(intersectLS),'\n'
         else:
             pass

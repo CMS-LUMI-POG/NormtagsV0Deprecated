@@ -71,59 +71,69 @@
   
      i) python makePerLumiNTs.py -f FillNo
      
-     ii) (i) Calls lumiValidate.py -f FillNo
+        - Calls lumiValidate.py -f FillNo
      
-     iii) Provides lumi sections available for each detector
+     ii) Provides lumi sections available for each detector
      
-     iv) Asks user for detector option: hfocv1, bcm1fv1, pltzerov1
+     iii) Asks user for detector option: hfocv1, bcm1fv1, pltzerov1
      
-     v) User is then asked to enter runNo, and bad LS range(s)
+     iv) User is then asked to enter runNo, and bad LS range(s)
      
-     vi) Output: recorded_LS.json, badLS_det_type.json, goodLS_det_type.json
+     v) python makeBrilNTs.py to generate normtagv1.json
      
-  c) As an example, let's say you would like to inspect Fill 4452. This particular fill has 3 different runs: 258174, 258175, and 258177. For simplicity, let's assume that pltzerov1 has bad data for run 258174 lumi sections 1 to 20, run 258177 lumi sections 1 to 100 and 300 to 350.
+  c) As an example, let's say you would like to inspect Fill 4452. This particular fill has 3 different runs: 258174, 258175, and 258177. For simplicity, let's assume that pltzerov1 has bad data for run 258174 lumi sections 1 to 5, run 258175 lumi sections 100 to 120 and run 258177 1500 to 2100. Similary, 258174 30 38, 258175 1 100, 258177 100 500 for hfocv1 and  258174 1 10, 258175 1 124, 258177 1 1000 for bcm1fv1.
   
      python makePerLumiNTs.py -f 4452
      
      pltzerov1
      
-     258175 1 20
+     258174 1 5
      
-     258177 1 100
+     258175 1 120
      
-     258177 300 350
+     258177 1500 2100
      
      exit(ctrl-D or ctrl-C return)
      
 
-     more *.json should look like the following:
-  
+Now you enter bad LS ranges for other detectors in a similar fashion (steps b, i-iv).
+
+     more goodLS*.json should look like the following:
+
      ::::::::::::::
-     badLS_pltzerov1.json
+     goodLS_bcm1fv1.json
      ::::::::::::::
-     ["pltzerov1",{"258175":[[1,20]]}],
-     ["pltzerov1",{"258177":[[1,100]]}],
-     ["pltzerov1",{"258177":[[300,350]]}]
+     ["bcm1fv1",{"258174":[[11,38]]}],
+     ["bcm1fv1",{"258177":[[2048,2132]]}],
+     ["bcm1fv1",{"258177":[[1001,2047]]}]
+     ::::::::::::::
+     goodLS_hfocv1.json
+     ::::::::::::::
+     ["hfocv1",{"258175":[[101,124]]}],
+     ["hfocv1",{"258174":[[1,29]]}],
+     ["hfocv1",{"258177":[[1,99]]}],
+     ["hfocv1",{"258177":[[501,2132]]}]
      ::::::::::::::
      goodLS_pltzerov1.json
      ::::::::::::::
-     ["pltzerov1",{"258175":[[21,124]]}],
-     ["pltzerov1",{"258174":[[1,38]]}],
-     ["pltzerov1",{"258177":[[101,299]]}],
-     ["pltzerov1",{"258177":[[351,2132]]}]
-     ::::::::::::::
-     recorded_LS.json
-     ::::::::::::::
+     ["pltzerov1",{"258175":[[1,99]]}],
+     ["pltzerov1",{"258175":[[121,124]]}],
+     ["pltzerov1",{"258174":[[6,38]]}],
+     ["pltzerov1",{"258177":[[1,1499]]}],
+     ["pltzerov1",{"258177":[[2101,2132]]}]
 
-     ["hfocv1",{"258174":[[1,38]]}],
-     ["hfocv1",{"258175":[[1,124]]}],
-     ["hfocv1",{"258177":[[1,2132]]}]
+goodLS_det_type.json files are basically per normtag files for each detector. Now, to generate normtag file as per detector preference(pltzero, bcm1f, hfoc in desc. order by default), you just have to say
 
-     ["bcm1fv1",{"258174":[[1,38]]}],
-     ["bcm1fv1",{"258175":[[1,124]]}],
-     ["bcm1fv1",{"258177":[[1,2132]]}]
+    python makeBrilNTs.py
 
-     ["pltzerov1",{"258174":[[1,38]]}],
-     ["pltzerov1",{"258175":[[1,124]]}],
-     ["pltzerov1",{"258177":[[1,2132]]}]
+This generates normtagv1.json file which should look like
 
+    ["hfocv1",{"258174":[[1,5]]}],
+    ["pltzerov1",{"258174":[[6,38]]}],
+    ["pltzerov1",{"258175":[[1,99]]}],
+    ["hfocv1",{"258175":[[101,120]]}],
+    ["pltzerov1",{"258175":[[121,124]]}],
+    ["pltzerov1",{"258177":[[1,1499]]}],
+    ["bcm1fv1",{"258177":[[1500,2047]]}],
+    ["bcm1fv1",{"258177":[[2048,2100]]}],
+    ["pltzerov1",{"258177":[[2101,2132]]}]

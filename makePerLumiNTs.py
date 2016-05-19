@@ -267,11 +267,12 @@ def main():
 def exit_handler():
     coord_good_file = 'badLS_' + det_type + '.json'
     f = open(coord_good_file,'w')
+    if (len(coords_bad) > 0):
+        for x in range(0,len(coords_bad) -1 ):
+            f.write(coords_bad[x]+",\n")
 
-    for x in range(0,len(coords_bad) -1 ):
-        f.write(coords_bad[x]+",\n")
+        f.write(coords_bad[len(coords_bad) - 1]) #we don't want comma for the last guy
 
-    f.write(coords_bad[len(coords_bad) - 1]) #we don't want comma for the last guy
     f.close()
 
     detRunLS_good = {}
@@ -295,9 +296,11 @@ def exit_handler():
 
     coord_good_file = 'goodLS_' + det_type + '.json'
     f = open(coord_good_file,'w')
-    for x in range(0,len(coords_good) -1 ):
-        f.write(coords_good[x]+",\n")
-    f.write(coords_good[len(coords_good) - 1]) #no commas for the last guy. Aww.
+
+    if (len(coords_good) > 0):
+        for x in range(0,len(coords_good) -1 ):
+            f.write(coords_good[x]+",\n")
+        f.write(coords_good[len(coords_good) - 1]) #no commas for the last guy. Aww.
     f.close()
 
 #TODO: convert all lists to arrays.

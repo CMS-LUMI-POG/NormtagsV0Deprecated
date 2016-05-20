@@ -3,6 +3,7 @@ import operator
 from operator import itemgetter
 from itertools import groupby
 
+
 # list of json files with goodLS
 listFiles = ["goodLS_pltzerov1.json","goodLS_bcm1fv1.json","goodLS_hfocv1.json"]
 
@@ -31,9 +32,39 @@ for key,val in runRange.iteritems():
     uRunLS[key] = list(set(val))
 
 
+
 # create normtag, give higher preference as:
 # smaller index==> higher preference
-preference = ["pltzerov1","bcm1fv1", "hfocv1"]
+
+
+print "\n\n"
+print "=======Enter detector preference order================================"
+print "=======Options::::: pbh, phb, bhp,bph,hpb,hbp ========================"
+print "=======Example:pbh: pltzerov1, bcm1fv1,hfocv1========================="
+
+order = ""
+
+det_order = ["pbh", "phb", "bhp", "bph", "hpb", "hbp"]
+
+while order not in det_order:
+    order = raw_input("Enter det. order: ")
+
+
+if order == "pbh":
+    preference = ["pltzerov1","bcm1fv1","hfocv1"]
+elif order == "phb":
+    preference = ["pltzerov1","hfocv1","bcm1fv1"]
+elif order == "bhp":
+    preference = ["bcm1fv1","hfocv1","pltzerov1"]
+elif order == "bph":
+    preference = ["bcm1fv1","pltzerov1","hfocv1"]
+elif order == "hpb":
+    preference = ["hfocv1","pltzerov1","bcm1fv1"]
+else:
+    preference = ["hfocv1","bcm1fv1","pltzerov1"]
+
+print "Det order picked: " ,preference
+
 
 perDetType = {}
 
@@ -109,3 +140,5 @@ for x in range(0,len(normTag) -1 ):
     f.write("[\"" + normTag[x][0] + "\",{\"" + str(normTag[x][1]) + "\":[[" + str(normTag[x][2]) + "," + str(normTag[x][3]) + "]]}]"+",\n")
 f.write("[\"" + normTag[len(normTag) - 1][0] + "\",{\"" + str(normTag[len(normTag) - 1][1]) + "\":[[" + str(normTag[len(normTag) - 1][2]) + "," + str(normTag[len(normTag) - 1][3]) + "]]}]" +"\n")
 f.close()
+
+print "Normtag file generated!"

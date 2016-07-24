@@ -72,8 +72,6 @@ if rankAlgo=="Default":
             #print "run",run
             if not compositeNT:
                 compositeNT.append(line)
-            elif run not in filledRuns:
-                compositeNT.append(line)
             else:
                 #print "find run in list--search whole list--run could be in more than one line"
                 iLine=0
@@ -89,7 +87,9 @@ if rankAlgo=="Default":
                     elif comRun>run:
                         break
                     iLine=iLine+1
-                if lsRanges:
+                if run not in filledRuns:
+                    compositeNT.insert(iLine,line)
+                elif lsRanges:
                     newDict={}
                     newDict[run]=lsRanges
                     compositeNT.insert(iLine,[line[0],newDict])

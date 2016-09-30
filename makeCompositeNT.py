@@ -30,12 +30,12 @@ def RemoveLSs(baseList,listToRM):
     for iLS in expandedBaseList:
         if iLS==expandedBaseList[0]:
             condensedList.append([iLS,-1])
-        elif iLS==expandedBaseList[-1]:
-            condensedList[-1][1]=iLS
         elif iLS-lastLS>1:
             condensedList[-1][1]=lastLS
             condensedList.append([iLS,-1])
 
+        if iLS==expandedBaseList[-1]:
+            condensedList[-1][1]=iLS
         lastLS=iLS
 
     #print condensedList

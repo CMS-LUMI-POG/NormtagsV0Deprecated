@@ -1,28 +1,177 @@
 fill,comments,offlinebestlumiorder
-4851,,pltzero/bcm1f/hflumi
-4852,,pltzero/bcm1f/hflumi
-4856,,pltzero/bcm1f/hflumi
-4861,,pltzero/bcm1f/hflumi
-4874,,pltzero/bcm1f/hflumi
-4879,,pltzero/bcm1f/hflumi
-4888,switched from bcm1f to pltzero,pltzero/bcm1f/hflumi
-4889,switched from bcm1f to pltzero,pltzero/bcm1f/hflumi
-4890,,pltzero/bcm1f/hflumi
-4892,,pltzero/bcm1f/hflumi
-4895,,pltzero/bcm1f/hflumi
-4896,,pltzero/bcm1f/hflumi
-4905,HVsteps for BCm1F in run 272927- invalidated also injected gas blips visible i plt/bcm 2672930 invalidated LS60-80,pltzero/bcm1f/hflumi
-4906,,pltzero/bcm1f/hflumi
-4910,,pltzero/bcm1f/hflumi
-4915,BCM1F HV Scans till 273158/303,pltzero/hflumi/bcm1f
-4919,,pltzero/bcm1f/hflumi
-4924,hflumi small step up run 273403,pltzero/hflumi/bcm1f
-4925,,pltzero/hflumi/bcm1f
-4926,,pltzero/hflumi/bcm1f
-4930,,pltzero/hflumi/bcm1f
-4935,,pltzero/hflumi/bcm1f
-4937,Many stpes in hflumi,pltzero/bcm1f/hflumi
-4942,,pltzero/hflumi/bcm1f
-
-
-
+4851,,hfoc/bcm1f/pltzero
+4852,,pltzero/bcm1f/hfoc
+4856,,pltzero/bcm1f/hfoc
+4861,,pltzero/bcm1f/hfoc
+4874,,pltzero/bcm1f/hfoc
+4879,,pltzero/bcm1f/hfoc
+4888,switched from bcm1f to pltzero,pltzero/bcm1f/hfoc
+4889,switched from bcm1f to pltzero,pltzero/bcm1f/hfoc
+4890,,pltzero/bcm1f/hfoc
+4892,,pltzero/bcm1f/hfoc
+4895,,pltzero/bcm1f/hfoc
+4896,,pltzero/bcm1f/hfoc
+4905,HVsteps for BCm1F in run 272927- invalidated also injected gas blips visible i plt/bcm 2672930 invalidated LS60-80,pltzero/bcm1f/hfoc
+4906,,pltzero/bcm1f/hfoc
+4910,,pltzero/bcm1f/hfoc
+4915,BCM1F HV Scans till 273158/303,pltzero/hfoc/bcm1f
+4919,,pltzero/bcm1f/hfoc
+4924,hfoc small step up run 273403,pltzero/hfoc/bcm1f
+4925,,pltzero/hfoc/bcm1f
+4926,,pltzero/hfoc/bcm1f
+4930,,pltzero/hfoc/bcm1f
+4935,,pltzero/hfoc/bcm1f
+4937,Many stpes in hfoc,pltzero/bcm1f/hfoc
+4942,,pltzero/hfoc/bcm1f
+4945,HFsteps in first runs bcm1f spikes in two LS 273593,pltzero/bcm1f/hfoc
+4947,PLT losing scopes? hf bunchtarin correction?, bcm1f/hfoc/pltzero
+4953,,pltzero/bcm1f/hfoc
+4954,VDM fill plt power supply trip in 274103,pltzero/hfoc/bcm1f
+4956,,pltzero/hfoc/bcm1f
+4958,,pltzero/hfoc/bcm1f
+4960,,pltzero/hfoc/bcm1f
+4961,bcm1f dead,pltzero/hfoc
+4964,,pltzero/hfoc/bcm1f
+4965,pltresets in 274251,pltzero/hfoc/bcm1f
+4976,,pltzero/hfoc/bcm1f
+4979,plt quadrant out in 274315&316,pltzero/hfoc/bcm1f
+4980,,pltzero/hfoc/bcm1f
+4984,,pltzero/hfoc/bcm1f
+4985,,pltzero/hfoc/bcm1f
+4988,plt shift in 274422,pltzero/hfoc/bcm1f
+4990,,pltzero/hfoc/bcm1f
+5005,mu scan fill,pltzero/hfoc/bcm1f
+5013,spikes fixed,pltzero/hfoc/bcm1f
+5017,,pltzero/hfoc/bcm1f
+5020,,pltzero/hfoc/bcm1f
+5021,,pltzero/hfoc/bcm1f
+5024,,pltzero/hfoc/bcm1f
+5026,,pltzero/hfoc/bcm1f
+5027,,pltzero/hfoc/bcm1f
+5028,,pltzero/hfoc/bcm1f
+5029,switched to hf after LS484 last run,pltzero/hfoc/bcm1f
+5030,,pltzero/hfoc/bcm1f
+5038,hfoc way off calibration for this fill,pltzero/bcm1f
+5043,,pltzero/hfoc/bcm1f
+5045,,pltzero/hfoc/bcm1f
+5048,,pltzero/hfoc/bcm1f
+5052,,pltzero/hfoc/bcm1f
+5056,,pltzero/hfoc/bcm1f
+5059,,pltzero/hfoc/bcm1f
+5060,,pltzero/hfoc/bcm1f
+5068,,pltzero/hfoc/bcm1f
+5069,,pltzero/hfoc/bcm1f
+5071,,pltzero/hfoc/bcm1f
+5072,,pltzero/hfoc/bcm1f
+5073,,pltzero/hfoc/bcm1f
+5076,,hfoc/pltzero/bcm1f
+5078,,hfoc/pltzero/bcm1f
+5080,,pltzero/hfoc/bcm1f
+5083,,pltzero/hfoc/bcm1f
+5085,,pltzero/hfoc/bcm1f
+5091,,pltzero/hfoc/bcm1f
+5093,,pltzero/hfoc/bcm1f
+5095,,pltzero/hfoc/bcm1f
+5096,,pltzero/hfoc/bcm1f
+5097,,pltzero/hfoc/bcm1f
+5101,,pltzero/hfoc/bcm1f
+5105,dropout in pltzero,hfoc/pltzero/bcm1f
+5106,,pltzero/hfoc/bcm1f
+5107,,pltzero/hfoc/bcm1f
+5108,plt invalid 277148:259-275,pltzero/hfoc/bcm1f
+5109,,pltzero/hfoc/bcm1f
+5110,,pltzero/hfoc/bcm1f
+5111,PLT/HF ratio changes by approx. 3% this fill,pltzero/hfoc/bcm1f
+5112,partial dropout in plt,hfoc/pltzero/bcm1f
+5116,PLT dropout from 5112 continued,hfoc/pltzero/bcm1f
+5117,PLT dropout from 5112 continued,hfoc/pltzero/bcm1f
+5149,,pltzero/hfoc/bcm1f
+5151,mu scan,pltzero/hfoc/bcm1f
+5154,,pltzero/hfoc/bcm1f
+5161,,pltzero/hfoc/bcm1f
+5162,,pltzero/hfoc/bcm1f
+5163,PLT partial dropout 278239:74-103 & HF LV problem 278240:64-70,pltzero/hfoc/bcm1f
+5169,,pltzero/hfoc/bcm1f
+5170,,pltzero/hfoc/bcm1f
+5173,PLT partial dropout 278308:239-279 & HF LV problem 278308:1200-1217,pltzero/hfoc/bcm1f
+5179,,pltzero/hfoc/bcm1f
+5181,PLT quadrant dropout 278345:591-278346:186,pltzero/hfoc/bcm1f
+5183,,pltzero/hfoc/bcm1f
+5187,,pltzero/hfoc/bcm1f
+5194,,pltzero/hfoc/bcm1f
+5196,,pltzero/hfoc/bcm1f
+5197,,pltzero/hfoc/bcm1f
+5198,PLT misconfigured at beginning of stable beams (268801:46-58) due to user error,pltzero/hfoc/bcm1f
+5199,,pltzero/hfoc/bcm1f
+5205,,pltzero/hfoc/bcm1f
+5206,,pltzero/hfoc/bcm1f
+5209,,pltzero/hfoc/bcm1f
+5210,PLT workloop off during fill,hfoc/bcm1f
+5211,,pltzero/hfoc/bcm1f
+5213,,pltzero/hfoc/bcm1f
+5219,,pltzero/hfoc/bcm1f
+5222,HF & BCM1F missing at beginning of fill,pltzero/hfoc/bcm1f
+5223,,pltzero/hfoc/bcm1f
+5229,lumi leveling test fill,pltzero/hfoc/bcm1f
+5246,no HF for this fill,pltzero/bcm1f
+5247,low pileup fill,pltzero/hfoc/bcm1f
+5251,,pltzero/hfoc/bcm1f
+5253,,pltzero/hfoc/bcm1f
+5254,negligibly small drop in PLT at end of fill,pltzero/hfoc/bcm1f
+5256,,pltzero/hfoc/bcm1f
+5257,small drop in PLT at end of fill,pltzero/hfoc/bcm1f
+5258,small noise in PLT at beginning of fill; HF bad due to LV trip 279716:861-875; BCM1F out due to blown power supply in NIM clock crate 279716:1385-1576,pltzero/hfoc/bcm1f
+5261,HF bad due to LV trip 279760:579-585,pltzero/hfoc/bcm1f
+5264,,pltzero/hfoc/bcm1f
+5265,,pltzero/hfoc/bcm1f
+5266,,pltzero/hfoc/bcm1f
+5267,data after 279844:346 bad due to magnet rampdown during this fill,pltzero/hfoc/bcm1f
+5270,,pltzero/hfoc/bcm1f
+5274,,pltzero/hfoc/bcm1f
+5275,,pltzero/hfoc/bcm1f
+5276,HF bad due to LV trip 279975:710-734,pltzero/hfoc/bcm1f
+5277,several HF LV and cooling issues at beginning of fill,pltzero/hfoc/bcm1f
+5279,PLT coldstart at 280188:69 to fix small drop,pltzero/hfoc/bcm1f
+5282,,pltzero/hfoc/bcm1f
+5287,PLT quadrant dropout 280363:212-234,hfoc/pltzero/bcm1f
+5288,PLT HV test fill,hfoc/pltzero/bcm1f
+5330,VdM-lite scan fill,pltzero/hfoc/bcm1f
+5331,,pltzero/hfoc/bcm1f
+5332,,pltzero/hfoc/bcm1f
+5338,length scale calibration,pltzero/hfoc/bcm1f
+5339,step in PLT and HF at 281680:45 due (probably?) to TCDS not being properly configured,pltzero/hf/bcm1f
+5340,HF LV trip 281707:983-999,pltzero/hfoc/bcm1f
+5345,small PLT partial dropout 271797:1019-1098,pltzero/hfoc/bcm1f
+5351,very small (0.3%) drop in PLT at 281976:210,pltzero/hfoc/bcm1f
+5352,,pltzero/hfoc/bcm1f
+5355,,pltzero/hfoc/bcm1f
+5370,stable beams fill during electron cloud MD; PLT off due to no cooling,hfoc/bcm1f
+5385,,pltzero/hfoc/bcm1f
+5386,,pltzero/hfoc/bcm1f
+5391,,pltzero/hfoc/bcm1f
+5393,,pltzero/hfoc/bcm1f
+5394,,pltzero/hfoc/bcm1f
+5395,HF out for first half of fill,pltzero/hfoc/bcm1f
+5401,HF out for first half of fill,pltzero/hfoc/bcm1f
+5405,bad PLT calibrations loaded online (offline is OK) so a couple of quick interruptions to fix processor (283043:247 and 283043:262),pltzero/hfoc/bcm1f
+5406,,pltzero/hfoc/bcm1f
+5412,high-PU fill,pltzero/hfoc/bcm1f
+5416,,pltzero/hfoc/bcm1f
+5418,HF+ interlocked off due to smoke alarm at 283308:950,pltzero/hfoc/bcm1f
+5421,,pltzero/hfoc/bcm1f
+5422,crossing angle test fill,pltzero/hfoc/bcm1f
+5423,PLT partial quadrant dropout 283408:1029-1180,pltzero/hfoc/bcm1f
+5424,,pltzero/hfoc/bcm1f
+5426,,pltzero/hfoc/bcm1f
+5427,HF bad 283478:303-323 due to LV issues,pltzero/hfoc/bcm1f
+5433,,pltzero/hfoc/bcm1f
+5437,,pltzero/hfoc/bcm1f
+5439,,pltzero/hfoc/bcm1f
+5441,,pltzero/hfoc/bcm1f
+5442,,pltzero/hfoc/bcm1f
+5443,,pltzero/hfoc/bcm1f
+5446,HF bad 283934:786-792 and 283934:1223-1266 due to LV issues,pltzero/hfoc/bcm1f
+5448,,pltzero/hfoc/bcm1f
+5450,,pltzero/hfoc/bcm1f
+5451,,pltzero/hfoc/bcm1f
+5456,special emittance calibration MD fill; TCDS data missing so no delivered luminosity for run 284077,pltzero/hfoc/bcm1f

@@ -13,7 +13,7 @@ luminometerOrder = ['hfoc', 'pltzero']
 
 # Any BX with a luminosity greater than bxThresh times the luminosity of the peak BX will
 # be considered filled. 0.1 is good for most purposes but for early fills you may need
-# to use a higher threshold for HF.
+# to use a higher threshold for HF. For HI fills 0.2 seems to work a little better.
 bxThresh = 0.1
 
 # Default fill list: all 2016 fills (starting with 4925, the start of stable operations for PLT)
@@ -31,7 +31,14 @@ fills = ['4925', '4926', '4930', '4935', '4937', '4942', '4945', '4947', '4953',
          '5332', '5338', '5339', '5340', '5345', '5351', '5352', '5355', '5370', '5385', '5386',
          '5391', '5393', '5394', '5395', '5401', '5405', '5406', '5412', '5416', '5418', '5421',
          '5422', '5423', '5424', '5426', '5427', '5433', '5437', '5439', '5441', '5442', '5443',
-         '5446', '5448', '5450', '5451', '5456']
+         '5446', '5448', '5450', '5451', '5456',
+         # HI fills at 4Z TeV. The first four of these will produce a bunch of problems for PLT
+         # because the threshold issues were causing the data to be split between adjacent BXes.
+         '5505', '5506', '5507', '5510', '5513', '5514',
+         # HI fills at 6.5Z TeV (except for 5575 which was back at 4Z).
+         '5519', '5520', '5521', '5522', '5523', '5524', '5526', '5527', '5528', '5533', '5534',
+         '5538', '5545', '5546', '5547', '5549', '5550', '5552', '5553', '5554', '5558', '5559',
+         '5562', '5563', '5564', '5565', '5568', '5569', '5570', '5571', '5573', '5575']
 
 # If an individual fill (or fills) is/are specified on the command line, use those instead
 if (len(sys.argv) > 1):
@@ -81,7 +88,7 @@ for fill in fills:
                 # Print out the full bunch pattern. This is really only useful when debugging fills
                 # with small numbers of filled bunches, not so useful for 2200 bunch fills. Hence
                 # the reason it's off by default.
-                if 1:
+                if 0:
                     print "Bunch pattern:",
                     lastBunch = -9 # number of last filled bunches
                     trainCount = 0 # number of bunches in current train

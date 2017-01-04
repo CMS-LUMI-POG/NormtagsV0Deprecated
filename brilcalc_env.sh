@@ -9,4 +9,4 @@ echo "Is your username listed in remote list?"
 echo
 git remote -v
 echo
-echo "If not, do 'git remote add YOURGITUSERNAME git@github.com:YOURGITUSERNAME/VdMFramework.git'."
+echo "If not, do 'git remote add YOURGITUSERNAME git@github.com:YOURGITUSERNAME/Normtags.git'."

@@ -3,8 +3,9 @@ import sys
 import argparse
 
 parser = argparse.ArgumentParser(description='Makes a valid normtag given a CSV from brilcalc')
-parser.add_argument('-f', '--filename', type=str, default="", help='CSV file from brilcalc.')
+parser.add_argument('-i', '--input', type=str, default="", help='CSV file from brilcalc.')
 parser.add_argument('-o', '--output', type=str, default="mynormtag.json", help='output file name')
+parser.add_argument('-n', '--normtag', type=str, default="pccLUM15001", help='String of normtag')
 args = parser.parse_args()
 
 def CondensedList(fullList):
@@ -25,14 +26,14 @@ def CondensedList(fullList):
     return condensedList
 
 
-if args.filename=="":
+if args.input=="":
     print "File needed to analyze"
     sys.exit(-1)
 else:
     try:
-        csvfile=open(args.filename)
+        csvfile=open(args.input)
     except:
-        print "Can't open",args.filename,"... exiting"
+        print "Can't open",args.input,"... exiting"
         sys.exit(-1)
 
 lines=csvfile.readlines()
@@ -66,7 +67,7 @@ for run in runs:
     print "condensed",CondensedList(validData[run])
 
     # example line:    ["hfoc16v1",{"271037":[[1,15]]}],
-    outputFile.write("[\"pccLUM15001\",{\""+str(run)+"\":"+str(CondensedList(validData[run]))+"}]")
+    outputFile.write("[\""+args.normtag+"\",{\""+str(run)+"\":"+str(CondensedList(validData[run]))+"}]")
     if run != runs[-1]:
         outputFile.write(",\n")
         

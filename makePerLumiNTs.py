@@ -41,22 +41,26 @@ def brilcalc_for_all(fill):
     if fill is not None:
         time_selection += ["-f", str(fill)]
 
-    cmd1 = ["brilcalc", "lumi", "--byls", "-o", f1.name,"--type","hfoc"]
+    cmd1 = ["brilcalc", "lumi", "--byls", "-o", f1.name,"--normtag","hfoc16v1"]
     cmd1 += time_selection
     subprocess.call(cmd1)
 
 
-    f2 = tempfile.NamedTemporaryFile()
-    #log.debug("Created temp file name for bcm1f: %s", f2.name)
-    cmd2 = ["brilcalc", "lumi", "--byls", "-o", f2.name,"--type","bcm1f"]
-    cmd2 += time_selection
-    subprocess.call(cmd2)
+    
 
     f3 = tempfile.NamedTemporaryFile()
     #log.debug("Created temp file name for pltzero: %s", f3.name)
-    cmd3 = ["brilcalc", "lumi", "--byls", "-o", f3.name,"--type","pltzero"]
+    cmd3 = ["brilcalc", "lumi", "--byls", "-o", f3.name,"--normtag","pltzero16v1"]
     cmd3 += time_selection
     subprocess.call(cmd3)
+
+    f2 = tempfile.NamedTemporaryFile()
+    #log.debug("Created temp file name for bcm1f: %s", f2.name)
+    cmd2 = ["brilcalc", "lumi", "--byls", "-o", f2.name,"--normtag","bcm1f16v1"]
+    cmd2 += time_selection
+    subprocess.call(cmd2)
+
+
 
     #(Krishna): Make plot in-house instead of calling lumiValidate.
     #don't need ratio plot to begin with, and we already have data in scope
@@ -64,9 +68,12 @@ def brilcalc_for_all(fill):
     cmdV = ["python","lumiValidate.py", "-o", fV.name]
     time_select = ["-f", str(fill)]
     cmdV += time_select
+    norm_select = [" --normtag", " pltzero16v1 hfoc16v1 bcm1f16v1"]
+    cmdV += norm_select
     # use popen to have it open in background
     # so that one can look at the plot, zoom in and figure out which LS to exclude
     # and then enter the numbers when prompted
+    print cmdV
     subprocess.Popen(cmdV, stdout=open(os.devnull, "w"), stderr=STDOUT)
 
 
@@ -100,7 +107,7 @@ def main():
     readline.parse_and_bind('set editing-mode vi')
 
 
-    types = ["hfoc","bcm1f","pltzero"]
+    types = ["hfoc16v1","bcm1f16v1","pltzero16v1"]
     f1,f2,f3 = brilcalc_for_all(args.fill)
 
     flist = [f1.name,f2.name,f3.name]
@@ -137,11 +144,11 @@ def main():
                     cmsls=lsls[1]
                     thisdet=row[8]
                     if thisdet=="PLTZERO":
-                        thisdet="pltzerov1"
+                        thisdet="pltzero16v1"
                     if thisdet=="BCM1F":
-                        thisdet="bcm1fv1"
+                        thisdet="bcm1f16v1"
                     if thisdet=="HFOC":
-                        thisdet="hfocv1"
+                        thisdet="hfoc16v1"
                     if first and cmsls!="0":
                         firstls=ls
                         lastls=ls
@@ -191,7 +198,7 @@ def main():
     print "=======Enter the type of detector you're inspecting============="
     print "=======Options: hfocv1, bcm1fv1, pltzerov1======================"
 
-    det_choices = ["hfocv1","bcm1fv1","pltzerov1"]
+    det_choices = ["hfoc16v1","pltzero16v1","bcm1f16v1"]
     global det_type
 
     while det_type not in det_choices:
@@ -267,12 +274,11 @@ def main():
 def exit_handler():
     coord_good_file = 'badLS_' + det_type + '.json'
     f = open(coord_good_file,'w')
-    if (len(coords_bad) > 0):
-        for x in range(0,len(coords_bad) -1 ):
-            f.write(coords_bad[x]+",\n")
 
-        f.write(coords_bad[len(coords_bad) - 1]) #we don't want comma for the last guy
+    for x in range(0,len(coords_bad) -1 ):
+        f.write(coords_bad[x]+",\n")
 
+    f.write(coords_bad[len(coords_bad) - 1]) #we don't want comma for the last guy
     f.close()
 
     detRunLS_good = {}
@@ -296,11 +302,9 @@ def exit_handler():
 
     coord_good_file = 'goodLS_' + det_type + '.json'
     f = open(coord_good_file,'w')
-
-    if (len(coords_good) > 0):
-        for x in range(0,len(coords_good) -1 ):
-            f.write(coords_good[x]+",\n")
-        f.write(coords_good[len(coords_good) - 1]) #no commas for the last guy. Aww.
+    for x in range(0,len(coords_good) -1 ):
+        f.write(coords_good[x]+",\n")
+    f.write(coords_good[len(coords_good) - 1]) #no commas for the last guy. Aww.
     f.close()
 
 #TODO: convert all lists to arrays.

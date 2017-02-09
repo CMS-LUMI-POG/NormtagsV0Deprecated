@@ -10,6 +10,6 @@ echo "-----"
 
 for i in bcm1f hfoc pltzero; do
     brilcalc lumi -f $fillNumber --type $i -b "STABLE BEAMS" --byls -o output.csv
-    python ../validation/bestlumi.py output.csv
+    python ./bestlumi.py output.csv
     echo "-----"
 done

@@ -15,7 +15,7 @@ log = logging.getLogger(__name__)
 
 RATIOS_TOP_YLIMIT = 1.25
 RATIOS_BOTTOM_YLIMIT = 0.75
-LUMI_TOP_YLIMIT = 4000
+LUMI_TOP_YLIMIT = 16000 #going up!
 LUMI_BOTTOM_YLIMIT = 0
 
 # default figure size in inches (NOTE: tuple)
@@ -184,6 +184,8 @@ def get_data(types, normtags, run=None, fill=None, beams=None):
             merged = pandas.merge(merged, data, how="outer",
                                   on=["#run:fill", "ls"])
 
+    # remove rows where "#run:fill" is corrupted
+    merged = merged[merged["#run:fill"].str.contains(':')].copy()
     merged["ls"] = merged["ls"].map(int_before_colon)
     merged["#run:fill"] = merged["#run:fill"].map(int_before_colon)
     merged.rename(columns={"#run:fill": "run"}, inplace=True)
@@ -213,6 +215,8 @@ def get_bunch_data(run=None, fill=None, beams=None):
         "#run:fill": "run",
         "[bxidx bxdelivered(hz/ub) bxrecorded(hz/ub)]": "bunches"})
     data = data.loc[:, ("run", "ls", "bunches")]
+    # remove rows where "#run:fill" is corrupted
+    data = data[data["run"].str.contains(':')].copy()
     data["ls"] = data["ls"].map(int_before_colon)
     data["run"] = data["run"].map(int_before_colon)
 
@@ -316,11 +320,11 @@ def calculate_ratios(data, cols):
 
 def make_correlation_plot(plot, data, x, y):
     log.info("making correlation plot")
-    plot.scatter(data[x], data[y], alpha=0.5)
+    plot.scatter(data[x], data[y]/data[x], alpha=0.5)
     log.info("calculating fit")
     # filter NaN's None's ...
     mask = numpy.isfinite(data[x]) & numpy.isfinite(data[y])
-    k, c = numpy.polyfit(data[x][mask], data[y][mask], 1)
+    k, c = numpy.polyfit(data[x][mask], (data[y]/data[x])[mask], 1)
     linex = [data[x].min(), data[x].max()]
     liney = [data[x].min()*k+c, data[x].max()*k+c]
     log.info("adding fit line")
@@ -329,7 +333,7 @@ def make_correlation_plot(plot, data, x, y):
     plot.text(0.0, 1.0, s=text, ha="left", va="top",
               fontsize=16, transform=plot.transAxes)
     plot.set_xlabel(x)
-    plot.set_ylabel(y)
+    plot.set_ylabel("{0}/{1}".format(y, x))
     plot.set_title("Correlation")
     plot.grid(True)
 
@@ -348,7 +352,7 @@ def make_avglumi_plot(plot, data, cols, run, fill):
         plot.set_title("Fill {0}".format(fill))
         separate_runs_on_plot(plot, data)
     else:
-        plot.set_title("Run: {0} Fill {1}".format(run, fill))
+        plot.set_title("Run {0}, Fill {1}".format(run, fill))
 
 
 def make_ratio_plot(plot, data, cols, run, fill):
@@ -383,10 +387,12 @@ def make_bunch_plot(plot, data, cols, run, fill, threshold):
     plot.set_ylabel("bxdelivered (hz/ub)")
 
     if run is None:
-        plot.set_title("By bunch. Fill {0}".format(fill))
+        plot.set_title(
+            "By bunch. Fill:{0}, threshold:{1}".format(fill, threshold))
         separate_runs_on_plot(plot, data)
     else:
-        plot.set_title("By bunch. Run: {0} Fill {1}".format(run, fill))
+        plot.set_title("By bunch. Run:{0}, Fill:{1}, threshold:{2}".format(
+            run, fill, threshold))
 
 
 if __name__ == "__main__":

@@ -42,7 +42,7 @@ Then, for each fill (where #### denotes the fill number):
 
 1) First, use lumiValidate to make a plot of the luminosity for the fill:
 
-`python ../validation/lumiValidate.py -b "STABLE BEAMS" -f #### --normtag bcm1f16v1 pltzero16v3 hfoc16v3b`
+`python ./lumiValidate.py -b "STABLE BEAMS" -f #### --normtag bcm1f16v1 pltzero16v3 hfoc16v3b`
 
 Take a look at the plots to see if there are any places where a luminometer drops out or experiences any
 strange steps or spikes. In particular, it's a lot easier to see steps in the ratio plot; zoom in on the ratio
